@@ -12,7 +12,11 @@ pipeline{
         stage('Docker Build'){
             steps{
                 echo 'check docker image'
-                sh(script: 'docker images -a')
+                sh(script: """
+                    su -
+                    Zfyu1206
+                    docker images -a
+                """)
                 sh(script: """
                     cd azure-vote/
                     docker images -a
