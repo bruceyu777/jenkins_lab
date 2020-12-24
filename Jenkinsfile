@@ -5,12 +5,21 @@ pipeline{
         stage('Verify Branch'){
             steps{
                 echo "$GIT_BRANCH"
+                sh(script: echo 'hello sh script' )
             }
         }
         
-        stage('Goodbye'){
+        stage('Docker Build'){
             steps{
-                echo 'Goodbye World!'
+                echo 'check docker image'
+                sh(script: 'docker images -a')
+                sh(script: """
+                    cd azure-vote/
+                    docker images -a
+                    docker build -t jenkins-pipeline .
+                    docker images -a
+                    cd ..            
+                """)
             }
         }
     }
