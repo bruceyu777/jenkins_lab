@@ -5,7 +5,7 @@ pipeline{
         stage('Verify Branch'){
             steps{
                 echo "$GIT_BRANCH"
-                sh(script: echo 'hello sh script' )
+                sh(script: 'echo "hello sh script"' )
             }
         }
         
